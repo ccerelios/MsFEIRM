@@ -61,7 +61,7 @@ Shoaib M, Bosch S, Incel O D, et al. "Complex Human Activity Recognition Using S
 
 The raw sensor recordings are available from the GitHub Release:
 
-- [UT-Group Dataset v1.0.0](https://github.com/ccerelios/UT-Group/releases/tag/v1.0.0)
+- [UT-Group Dataset v1.0.0](https://github.com/ccerelios/MsFEIRM/releases/tag/v1.0.0)
 
 The release contains:
 
