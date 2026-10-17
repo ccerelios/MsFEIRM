@@ -1,0 +1,24 @@
+model:
+  window_size: 128
+segmentation:
+  k_min: 3
+  k_max: 6
+loss:
+  lambda_cardinality: 2.0
+  lambda_member: 1.5
+  ignore_index: -100
+synthetic:
+  sample_count: 8
+  min_members: 13
+  max_members: 21
+  seed: 20261015
+  noise_std: 0.02
+training:
+  batch_size: 1
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  seed: 42
+  device: cpu
+  threads: 1
+  checkpoint_every_steps: 100
+  checkpoint_every_seconds: 300.0

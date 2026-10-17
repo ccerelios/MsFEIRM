@@ -1,0 +1,59 @@
+dataset:
+  name: wbsensor
+  input: ../Datasets/WBSensor-public/data
+  input_glob: "*/*.npy"
+  channels: 6
+  sample_rate: 50
+  window_size: 128
+  train_members: 15
+  test_members: [13, 14, 15, 16, 17, 18, 19, 20, 21]
+  activity_names: [Exercising, Smoking, Playing cards, Chessing, Dining, Queuing, Working, Fighting, Resting]
+  reader:
+    # Match each filename after removing its numeric recording suffix.
+    file_actions:
+      walking: walking
+      jogging: jogging
+      smoking: smoking
+      playing_cards: playing_cards
+      playing_chess: playing_chess
+      eating: eating
+      drinking_water: drinking
+      standing: standing
+      typing: typing
+      writing: writing
+      reading: reading
+      boxing: fighting
+      sitting: sitting
+      lying: lying
+      unassigned_eating: eating
+      unassigned_writing: writing
+  split:
+    seed: 42
+    ratios: [0.7, 0.1, 0.2]
+    supplied_manifest: null
+  normalization:
+    epsilon: 1.0e-8
+  grouping:
+    min_activity_groups: 3
+    max_activity_groups: 5
+    min_subgroup_size: 2
+    max_subgroup_size: 5
+    noise_members: 1
+    ignore_index: -100
+    seed: 43
+  # Frozen for training N=15 and every test N; independent of sample targets.
+  model_k_bounds: [4, 6]
+  group_samples:
+    train: null
+    validation: null
+    test: null
+  recipes:
+    - {name: Exercising, member_actions: [walking, jogging]}
+    - {name: Smoking, member_actions: [smoking]}
+    - {name: Playing cards, member_actions: [playing_cards]}
+    - {name: Chessing, member_actions: [playing_chess]}
+    - {name: Dining, member_actions: [eating, drinking]}
+    - {name: Queuing, member_actions: [standing]}
+    - {name: Working, member_actions: [typing, writing, reading]}
+    - {name: Fighting, member_actions: [fighting]}
+    - {name: Resting, member_actions: [sitting, lying]}

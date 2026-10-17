@@ -1,0 +1,18 @@
+# Complete-model defaults; this work package implements the individual features.
+model:
+  input_channels: 6
+  window_size: 200
+  num_scales: 4
+  partition_channels: 8
+  scale_embedding_dim: 32
+  eca_kernel_size: 3
+  conv_bias: true
+  linear_bias: true
+  local_depth: 2
+  global_depth: 1
+  attention_heads: 2
+  attention_scale: false
+  ffn_expansion: 2
+  dropout: 0.0
+  epsilon: 1.0e-8
+  num_classes: 9

@@ -1,0 +1,11 @@
+# I-3a component defaults; stage II binds K bounds to each fixed data protocol.
+segmentation:
+  k_min: 3
+  k_max: 6
+  pair_hidden_dim: 64
+  cardinality_hidden_dim: 64
+  clustering_seed: 42
+  kmeans_n_init: 10
+  kmeans_max_iter: 300
+  gap_tolerance: 0.000001
+  epsilon: 0.00000001

@@ -1,0 +1,4 @@
+loss:
+  lambda_cardinality: 2.0
+  lambda_member: 1.5
+  ignore_index: -100

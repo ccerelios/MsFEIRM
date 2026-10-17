@@ -1,0 +1,50 @@
+dataset:
+  name: ut_group
+  input: ../Datasets/smartphoneatwrist.csv
+  channels: 6
+  sample_rate: 50
+  window_size: 200
+  stride: 100
+  train_members: 10
+  test_members: [10]
+  activity_names: [Walking, Queuing, Jogging, Working, Resting, Speeching, Smoking, Dining, Examining]
+  reader:
+    sensor_columns: [1, 2, 3, 7, 8, 9]
+    action_column: 13
+    skip_rows: 0
+    action_codes:
+      '11111': walking
+      '11112': standing
+      '11113': jogging
+      '11114': sitting
+      '11118': typing
+      '11119': writing
+      '11120': drinking
+      '11121': speech
+      '11122': smoking
+      '11123': eating
+  split:
+    seed: 42
+    ratios: [0.7, 0.1, 0.2]
+    supplied_manifest: null
+  normalization:
+    epsilon: 0.00000001
+  grouping:
+    min_activity_groups: 3
+    max_activity_groups: 5
+    min_subgroup_size: 2
+    max_subgroup_size: 5
+    noise_members: 1
+    ignore_index: -100
+    seed: 43
+  group_samples: {train: null, validation: null, test: null}
+  recipes:
+    - {name: Walking, member_actions: [walking]}
+    - {name: Queuing, member_actions: [standing]}
+    - {name: Jogging, member_actions: [jogging]}
+    - {name: Working, member_actions: [typing, writing]}
+    - {name: Resting, member_actions: [sitting]}
+    - {name: Speeching, anchor_action: speech, member_actions: [sitting, writing]}
+    - {name: Smoking, member_actions: [smoking]}
+    - {name: Dining, member_actions: [eating, drinking]}
+    - {name: Examining, anchor_action: standing, member_actions: [writing]}
